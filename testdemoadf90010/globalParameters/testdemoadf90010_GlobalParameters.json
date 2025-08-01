@@ -1,0 +1,6 @@
+{
+	"emailNotificationLink": {
+		"type": "string",
+		"value": "https://gmail.com"
+	}
+}

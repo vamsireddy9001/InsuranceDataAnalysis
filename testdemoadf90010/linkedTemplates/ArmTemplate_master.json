@@ -1,0 +1,202 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "testdemoadf90010"
+		},
+		"adls_gen2_ls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adls_gen2_ls'"
+		},
+		"adls_ls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adls_ls'"
+		},
+		"db_ls_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'db_ls'"
+		},
+		"ls_adls_gen2_new_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_gen2_new'"
+		},
+		"ls_azure_sql_db_new_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_azure_sql_db_new'"
+		},
+		"ls_sql_db_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_sql_db'"
+		},
+		"sql_db_linked_service_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'sql_db_linked_service'"
+		},
+		"adls_gen2_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://teststgaccount9001.dfs.core.windows.net/"
+		},
+		"adls_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://teststgaccount9001.dfs.core.windows.net/"
+		},
+		"db_ls_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0725-030520-77x48s6r"
+		},
+		"ls_adls_gen2_new_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://teststgaccount9001.dfs.core.windows.net/"
+		},
+		"ls_azure_sql_db_new_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "testdb9001.database.windows.net"
+		},
+		"ls_azure_sql_db_new_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testdb9001"
+		},
+		"ls_azure_sql_db_new_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"ls_sql_db_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "testdb9001.database.windows.net"
+		},
+		"ls_sql_db_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testdb9001"
+		},
+		"ls_sql_db_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"sql_db_linked_service_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demoserver9001.database.windows.net"
+		},
+		"sql_db_linked_service_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testdemodb9001"
+		},
+		"sql_db_linked_service_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "testdemoadf90010_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"adls_gen2_ls_accountKey": {
+						"value": "[parameters('adls_gen2_ls_accountKey')]"
+					},
+					"adls_ls_accountKey": {
+						"value": "[parameters('adls_ls_accountKey')]"
+					},
+					"db_ls_accessToken": {
+						"value": "[parameters('db_ls_accessToken')]"
+					},
+					"ls_adls_gen2_new_accountKey": {
+						"value": "[parameters('ls_adls_gen2_new_accountKey')]"
+					},
+					"ls_azure_sql_db_new_password": {
+						"value": "[parameters('ls_azure_sql_db_new_password')]"
+					},
+					"ls_sql_db_password": {
+						"value": "[parameters('ls_sql_db_password')]"
+					},
+					"sql_db_linked_service_password": {
+						"value": "[parameters('sql_db_linked_service_password')]"
+					},
+					"adls_gen2_ls_properties_typeProperties_url": {
+						"value": "[parameters('adls_gen2_ls_properties_typeProperties_url')]"
+					},
+					"adls_ls_properties_typeProperties_url": {
+						"value": "[parameters('adls_ls_properties_typeProperties_url')]"
+					},
+					"db_ls_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('db_ls_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_adls_gen2_new_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_gen2_new_properties_typeProperties_url')]"
+					},
+					"ls_azure_sql_db_new_properties_typeProperties_server": {
+						"value": "[parameters('ls_azure_sql_db_new_properties_typeProperties_server')]"
+					},
+					"ls_azure_sql_db_new_properties_typeProperties_database": {
+						"value": "[parameters('ls_azure_sql_db_new_properties_typeProperties_database')]"
+					},
+					"ls_azure_sql_db_new_properties_typeProperties_userName": {
+						"value": "[parameters('ls_azure_sql_db_new_properties_typeProperties_userName')]"
+					},
+					"ls_sql_db_properties_typeProperties_server": {
+						"value": "[parameters('ls_sql_db_properties_typeProperties_server')]"
+					},
+					"ls_sql_db_properties_typeProperties_database": {
+						"value": "[parameters('ls_sql_db_properties_typeProperties_database')]"
+					},
+					"ls_sql_db_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sql_db_properties_typeProperties_userName')]"
+					},
+					"sql_db_linked_service_properties_typeProperties_server": {
+						"value": "[parameters('sql_db_linked_service_properties_typeProperties_server')]"
+					},
+					"sql_db_linked_service_properties_typeProperties_database": {
+						"value": "[parameters('sql_db_linked_service_properties_typeProperties_database')]"
+					},
+					"sql_db_linked_service_properties_typeProperties_userName": {
+						"value": "[parameters('sql_db_linked_service_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "testdemoadf90010_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'testdemoadf90010_ArmTemplate_0')]"
+			]
+		}
+	]
+}
